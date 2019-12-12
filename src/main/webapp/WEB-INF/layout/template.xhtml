@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <f:view contentType="text/html" encoding="UTF-8">
+
+        <h:head>
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+            <title>#{!title.equals("") ? title : "Main"}|Agenda</title>
+            <!-- Favicon -->
+            <link href="./assets/img/brand/favicon.png" rel="icon" type="image/png"/>
+            <!-- Fonts -->
+            <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet"/>
+            <!-- Icons -->
+            <!--<link href="./assets/js/plugins/nucleo/css/nucleo.css" rel="stylesheet" />-->
+            <h:outputStylesheet library="js" name="plugins/nucleo/css/nucleo.css"></h:outputStylesheet>
+            <!--<link href="./assets/js/plugins/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet" />-->
+            <h:outputStylesheet library="js" name="plugins/@fortawesome/fontawesome-free/css/all.min.css"></h:outputStylesheet>
+            <!-- CSS Files -->
+            <h:outputStylesheet library="css" name="argon-dashboard.css?v=1.1.0"></h:outputStylesheet>
+            <!--<link href="./assets/css/argon-dashboard.css?v=1.1.0" rel="stylesheet" />-->
+            <ui:insert name="pageOtherLink"></ui:insert>
+        </h:head>
+
+        <h:body class="">
+            <!--nav-->
+            <ui:include src="sidebar.xhtml"/>
+            <div class="main-content">
+                <!--navbar-->
+                <ui:fragment rendered="true">
+                    <ui:include src="navbar.xhtml"/>
+                </ui:fragment>
+                <!--navheader-->
+                <ui:fragment  rendered="true">
+                    <ui:include src="navheader.xhtml"/>
+                </ui:fragment>
+                <div class="container-fluid mt--7">
+                    <ui:insert name="mainContent"></ui:insert>
+                </div>
+                <!--<ui:include src="footer.xhtml"/>-->
+            </div>
+            <!--basejs-->
+            <ui:include src="basejs.xhtml"/>
+            <ui:insert name="pageOtherJs"></ui:insert>
+            <script>
+                window.TrackJS &amp;&amp;
+                        TrackJS.install({
+                            token: "ee6fab19c5a04ac1a32a645abde4613a",
+                            application: "argon-dashboard-free"
+                        });
+            </script>
+        </h:body>
+
+    </f:view>
+</html>
