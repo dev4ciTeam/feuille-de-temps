@@ -11,6 +11,12 @@ import javax.persistence.Entity;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 /**
  *
@@ -23,6 +29,12 @@ import javax.persistence.Table;
     @NamedQuery(name = "UserEntity.findAllByEmail", query = "SELECT u FROM UserEntity u WHERE u.email = :email"),
     @NamedQuery(name = "UserEntity.findAllByCredential", query = "SELECT u FROM UserEntity u WHERE u.email = :email AND u.password = :password"),
 })
+@Data
+@Getter
+@Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserEntity extends BaseEntity{
     private static final Set<String> DEFAULT_ROLE = new HashSet<>(Arrays.asList(Roles.ROLE_USER));
     @Basic
@@ -46,5 +58,5 @@ public class UserEntity extends BaseEntity{
     private String urlImage;
     @ElementCollection(targetClass = Roles.class)
     @CollectionTable(name = "tbl_user_roles", schema = "agenda_db")
-    private Set<String> roles = DEFAULT_ROLE;
+    private final Set<String> roles = DEFAULT_ROLE;
 }
