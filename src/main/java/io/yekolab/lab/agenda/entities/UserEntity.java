@@ -1,6 +1,7 @@
 package io.yekolab.lab.agenda.entities;
 
 import java.util.Arrays;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Basic;
@@ -12,8 +13,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -25,14 +24,11 @@ import lombok.Setter;
 @Entity
 @Table(name = "tbl_user", schema = "agenda_db")
 @NamedQueries({
-    @NamedQuery(name = "UserEntity.findAllByDelete", query = "SELECT u FROM UserEntity u WHERE u._deleted = :delete"),
     @NamedQuery(name = "UserEntity.findAllByEmail", query = "SELECT u FROM UserEntity u WHERE u.email = :email"),
     @NamedQuery(name = "UserEntity.findAllByCredential", query = "SELECT u FROM UserEntity u WHERE u.email = :email AND u.password = :password"),
 })
-@Data
 @Getter
 @Setter
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserEntity extends BaseEntity{
@@ -59,4 +55,11 @@ public class UserEntity extends BaseEntity{
     @ElementCollection(targetClass = Roles.class)
     @CollectionTable(name = "tbl_user_roles", schema = "agenda_db")
     private final Set<String> roles = DEFAULT_ROLE;
+
+    @Override
+    public String toString() {
+        return this.nom+" "+this.prenom;
+    }
+    
+    
 }

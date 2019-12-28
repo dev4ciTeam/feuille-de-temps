@@ -1,0 +1,16 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/WEB-INF/layout/template.xhtml">
+
+    <ui:param name="title" value="Sample"/>
+    <ui:define name="mainContent">
+        <div class="row">
+            <div class="col">
+                <div class="card shadow border-0">
+                    <div id="map-canvas" class="map-canvas" data-lat="40.748817" data-lng="-73.985428" style="height: 600px;"></div>
+                </div>
+            </div>
+        </div>
+    </ui:define>
+
+</ui:composition>

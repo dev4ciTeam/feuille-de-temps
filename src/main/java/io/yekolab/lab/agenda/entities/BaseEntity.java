@@ -1,7 +1,7 @@
 package io.yekolab.lab.agenda.entities;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -29,15 +29,15 @@ public class BaseEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
-    protected long _id;
+    protected long id;
     @Column(name = "VERS")
-    protected long _version;
+    protected long version;
     @Column(name = "DEL")
-    protected boolean _deleted;
+    protected boolean deleted;
     @Temporal(TemporalType.DATE)
     @Column(name = "DATE_CREATE")
-    protected final Date _dateCreate = new Date(System.currentTimeMillis());
+    protected final Date dateCreate = new Date(System.currentTimeMillis());
     @Temporal(TemporalType.DATE)
     @Column(name = "LAST_DATE_EDIT")
-    protected Date _lastDateEdit;
+    protected Date lastDateEdit;
 }
